@@ -1,0 +1,80 @@
+<!--https://developer.mozilla.org/pt-BR/docs/Web/HTML-->
+<!--https://developer.mozilla.org/pt-BR/docs/Web/CSS-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-Portfolio</title>
+</head>
+<body>
+
+    <input type="checkbox" id="open-door" autocomplete="off">
+
+    <label for="open-door" class="metal-door"></label>
+
+    <div class="cenario-loja">
+        <img src="assets/images/character/npcPlaceholder.png" alt="NPC" class="npc-imagem">
+    </div>
+
+
+    <div class="hud">
+
+        <header class="name-box">
+            <h1>Juan</h1>
+        </header>
+
+        <div class="main-box">
+
+            <!-- todos tem o msm nome pq é pra ter como selecionar só 1 (n sei se tem outro jeito) -->
+            <input type="radio" name="menu-loja" id="btn-sobre" checked autocomplete="off">
+            <input type="radio" name="menu-loja" id="btn-conhecimento" autocomplete="off">
+            <input type="radio" name="menu-loja" id="btn-projetos" autocomplete="off">
+            <!-- "checked" no final faz ele vir marcado já, sendo meio que o estado inicial -->
+
+
+            <div class="text-box">
+
+                <div class="state screen-sobre">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                    <p>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+
+                <div class="state screen-conhecimento">
+                    <p>Conhecimentos:</p>
+                    <ul>
+                        <li>Conhecimento 1</li>
+                        <li>Conhecimento 2</li>
+                        <li>Conhecimento 3</li>
+                    </ul>
+                </div>
+
+                <div class="state screen-projetos">
+                    <p>Criações:</p>
+                    <!-- colocar uma tabela aqui depois? -->
+                </div>
+
+            </div>
+
+
+            <div class="options-box">
+                <!-- "for" conecta o rótulo no id, ai quando clica ele leva pro botao -->
+                <label for="btn-sobre" class="opcao">Sobre Mim</label>
+                <label for="btn-conhecimento" class="opcao">Conhecimento</label>
+                <label for="btn-projetos" class="opcao">Meus Projetos</label>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <audio>
+        <source src="assets/audios/Alice in Chains - No Excuses (Instrumental).mp3" type="audio/mp3">
+    </audio>
+
+</body>
+</html>
