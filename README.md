@@ -16,7 +16,7 @@ Developed to consolidate my Web Development skills, the goal was to push the lim
 
 Beyond the code, the design is completely custom. All the visual elements (from the background scenery to the character and UI details) were drawn and sliced by me using Aseprite.
 
-## Features and Highlights
+## Features
 
 * **Zero JavaScript:** Tab navigation and menus are controlled purely by HTML states (`input type="radio"` and `:checked`).
 * **Typewriter Effect:** Responsive animated dialog texts built with CSS variables, `@keyframes`, and the `steps()` function.
