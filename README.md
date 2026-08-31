@@ -14,7 +14,7 @@ This is an interactive personal portfolio featuring an immersive aesthetic inspi
 
 Developed to consolidate my Web Development skills, the goal was to push the limits of CSS. All the interactivity, screen transitions, and menu logic were created using advanced CSS techniques.
 
-Beyond the code, the design is completely custom. All the visual elements — from the background scenery to the character and UI details — were drawn and sliced by me using Aseprite.
+Beyond the code, the design is completely custom. All the visual elements (from the background scenery to the character and UI details) were drawn and sliced by me using Aseprite.
 
 ## Features and Highlights
 
@@ -32,12 +32,12 @@ Since this project is perfectly static and has no dependencies, frameworks, or d
    git clone [https://github.com/otijolo/portfolio.git](https://github.com/otijolo/portfolio.git)
    ```
 2. Open the project folder in your file explorer.
-3. Double-click the `index.html` file to open it in your default web browser.
+3. Doubleclick the `index.html` file to open it in your default web browser.
 
 ## Screenshots
 
 ![Main Menu](prints/print_start_menu.png)
 ![Closed Door](prints/print_closed_door.png)
 
----
+-
 Made by [Juan](https://github.com/otijolo)
