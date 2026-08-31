@@ -10,7 +10,7 @@ This is an interactive personal portfolio featuring an immersive aesthetic inspi
 
 ---
 
-## About the Project
+## About
 
 Developed to consolidate my Web Development skills, the goal was to push the limits of CSS. All the interactivity, screen transitions, and menu logic were created using advanced CSS techniques.
 
