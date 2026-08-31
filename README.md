@@ -39,7 +39,5 @@ Since this project is perfectly static and has no dependencies, frameworks, or d
 ![Main Menu](prints/print_start_menu.png)
 ![Closed Door](prints/print_closed_door.png)
 
--
--
--
+
 Made by [Juan](https://github.com/otijolo)
