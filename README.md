@@ -40,4 +40,4 @@ Since this project is perfectly static and has no dependencies, frameworks, or d
 ![Closed Door](prints/print_closed_door.png)
 
 
-Made by [Juan](https://github.com/otijolo)
+Made by [Juan (me!!!)](https://github.com/otijolo)
