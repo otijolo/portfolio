@@ -29,7 +29,7 @@ Since this project is perfectly static and has no dependencies, frameworks, or d
 
 1. Clone this repository:
    ```bash
-   git clone [https://github.com/otijolo/portfolio.git](https://github.com/otijolo/portfolio.git)
+   git clone https://github.com/otijolo/portfolio.git
    ```
 2. Open the project folder in your file explorer.
 3. Doubleclick the `index.html` file to open it in your default web browser.
