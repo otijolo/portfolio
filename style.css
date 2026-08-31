@@ -1,0 +1,369 @@
+/* fonts and basic reset*/
+/* --------------------- */
+
+@font-face {
+    font-family: 'Determination';
+    src: url('assets/fonts/determination.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    background-color: black;
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+    color: white;
+    font-family: 'Determination', serif;
+}
+
+p, li {
+    color: white; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+a {
+    color: yellow;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* general game layout and scenery */
+/* ------------------------------- */
+
+.cenario-loja {
+    height: 45vh;
+    width: 100%;
+    background-image: url(assets/images/background/true_background.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    image-rendering: pixelated;
+}
+
+.hud {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.main-box {
+    height: 55vh;
+    width: 100%;
+    display: flex;
+    border: 15px solid white;
+    box-sizing: border-box;
+    background-color: black;
+}
+
+.text-box {
+    width: 80%;
+    padding: 20px 1px 1px 50px;
+    border-right: 10px solid white;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: white black;
+}
+
+.options-box {
+    width: 20%;
+    padding: 30px 1px 1px 100px;
+    position: relative;
+}
+
+.options-box p {
+    font-family: 'Determination', serif;
+    font-size: 20px;
+}
+
+
+
+/* visual components */
+/* ----------------- */
+
+/* npc */
+.npc-container {
+    position: relative;
+    height: 60vh;
+}
+
+.npc-blind, .npc-eyes {
+    height: 100%;
+    image-rendering: pixelated;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.npc-eyes {
+    transition: transform 0.3s ease-out;
+}
+
+/* nameplate and footer */
+.name-box {
+    width: fit-content;
+    border: 15px solid white;
+    border-bottom: none;
+    text-align: center;
+    padding: 15px 30px;
+    background-color: black;
+}
+
+.rodape {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: gray;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 20px;
+}
+
+/* projects table */
+.tabela-projetos {
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.tabela-projetos th, .tabela-projetos td {
+    border: 2px solid white;
+    padding: 10px;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    text-align: left;
+}
+
+.tabela-projetos th {
+    font-family: 'Determination', serif;
+    font-size: 22px;
+}
+
+.tabela-projetos td img {
+    height: auto;
+    margin-top: 15px;
+    display: inline-block;
+    border: 2px solid white;
+    image-rendering: pixelated;
+}
+
+/* custom scrollbar (webkit) */
+.text-box::-webkit-scrollbar {
+    width: 15px;
+}
+.text-box::-webkit-scrollbar-track {
+    background: black;
+    border-left: 2px solid white;
+}
+.text-box::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+
+
+/* menu options and lil hand */
+/* ------------------------- */
+
+input[type="radio"] {
+    display: none;
+}
+
+.opcao {
+    color: white;
+    display: block;
+    font-family: 'Determination', serif;
+    font-size: 3vh;
+    cursor: pointer;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.opcao::before {
+    content: "";
+    position: absolute;
+    left: -83px;
+    transform: translateY(-25%);
+    width: 70px;
+    height: 70px;
+    background-image: url(assets/images/details/littlehand.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    opacity: 0;
+}
+
+
+
+/* metal door system */
+/* ----------------- */
+
+#open-door {
+    display: none;
+}
+
+.metal-door {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-image: url(assets/images/foreground/door_open.png);
+    background-size: cover;
+    background-position: bottom;
+    image-rendering: pixelated;
+    transition: transform 1.5s ease-in-out;
+    cursor: pointer;
+}
+
+/* opens the door by clicking on it */
+#open-door:checked ~ .metal-door {
+    transform: translateY(-100%);
+}
+
+/* closes the door when the "exit" button is triggered and swaps the image */
+body:has(#btn-sair:checked) .metal-door {
+    transform: translateY(0) !important;
+    background-image: url(assets/images/foreground/door_close.png) !important;
+    pointer-events: none;
+}
+
+
+
+/* mouse tracking with npc eyes */
+/* ---------------------------- */
+
+/* looks up */
+body:has(.cenario-loja:hover) .npc-eyes {
+    transform: translate(-50%, -4px); 
+}
+
+/* looks down and left (to the text box) */
+body:has(.text-box:hover) .npc-eyes {
+    transform: translate(calc(-50% - 6px), 6px); 
+}
+
+/* looks down and right (to the options box) */
+body:has(.options-box:hover) .npc-eyes {
+    transform: translate(calc(-50% + 6px), 6px);
+}
+
+
+
+/* state logic for screen changes and lil hand */
+/* ------------------------------------------- */
+
+/* hides screens by default */
+.state {
+    display: none;
+}
+
+/* shows the screen corresponding to the selected button */
+#btn-inicio:checked ~ .text-box .screen-inicio,
+#btn-conhecimento:checked ~ .text-box .screen-conhecimento,
+#btn-projetos:checked ~ .text-box .screen-projetos,
+#btn-sobre:checked ~ .text-box .screen-sobre,
+#btn-contato:checked ~ .text-box .screen-contato {
+    display: block;
+}
+
+/* lights up the little hand next to the selected button */
+#btn-sobre:checked ~ .options-box label[for="btn-sobre"]::before,
+#btn-conhecimento:checked ~ .options-box label[for="btn-conhecimento"]::before,
+#btn-projetos:checked ~ .options-box label[for="btn-projetos"]::before,
+#btn-contato:checked ~ .options-box label[for="btn-contato"]::before,
+#btn-sair:checked ~ .options-box label[for="btn-sair"]::before {
+    opacity: 1;
+}
+
+
+
+/* text animation */
+/* -------------- */
+
+@keyframes digitar {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* prepares the texts of the affected screens for animation */
+.state p, .state li {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation-duration: 1s;
+    animation-timing-function: steps(40, end);
+    animation-fill-mode: forwards;
+    animation-name: none;
+}
+
+/* disables animation for the projects table */
+.screen-projetos p,
+.screen-projetos td,
+.screen-projetos th {
+    width: auto;
+    overflow: visible;
+    white-space: normal;
+}
+
+/* triggers animation only on active screens */
+#open-door:checked ~ .hud .screen-inicio p,
+#btn-sobre:checked ~ .text-box .screen-sobre p,
+#btn-conhecimento:checked ~ .text-box .screen-conhecimento p,
+#btn-conhecimento:checked ~ .text-box .screen-conhecimento li,
+#btn-contato:checked ~ .text-box .screen-contato p,
+#btn-contato:checked ~ .text-box .screen-contato li {
+    animation-name: digitar;
+}
+
+/* time control (delays) */
+.screen-inicio p:nth-child(1) {
+    animation-delay: 1.5s;
+}
+
+.screen-inicio p:nth-child(2) {
+    animation-delay: 2s;
+}
+
+/* - */
+
+.screen-sobre p {
+    animation-delay: calc(var(--i) * 1s);
+}
+
+.screen-conhecimento p, .screen-conhecimento li {
+    animation-delay: calc(var(--i) * 0.2s);
+}
+
+/* - */
+
+.screen-contato li:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.screen-contato li:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.screen-contato li:nth-child(3) {
+    animation-delay: 1.5s;
+}
