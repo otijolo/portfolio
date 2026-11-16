@@ -2438,3 +2438,57 @@ html.keyboard-mode .contact-list a:focus::before {
     transform: none;
   }
 }
+
+.orientation-notice {
+  display: none;
+}
+
+@media (max-width: 1024px) and (orientation: portrait) and (hover: none) and (pointer: coarse) {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body > :not(.orientation-notice) {
+    display: none !important;
+  }
+
+  body > .orientation-notice {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 20000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 28px;
+    background: #000;
+    color: var(--ink);
+    font: 26px/1.25 var(--pixel);
+    text-align: center;
+  }
+
+  .orientation-phone {
+    width: 120px;
+    height: 96px;
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+
+  .orientation-notice p {
+    max-width: 340px;
+    margin: 0;
+  }
+
+  .orientation-notice p:first-of-type {
+    color: var(--gold);
+    font-size: 36px;
+  }
+
+  .orientation-notice p:last-child {
+    color: var(--muted);
+    font-size: 22px;
+  }
+}
