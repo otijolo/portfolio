@@ -54,8 +54,6 @@ Then open http://localhost:5500. Use a local server to load the JavaScript modul
 
 ## Authorship and credits
 
-Experience concept, art direction, and pixel art by Juan Carlos.
-
 The featured projects include collaborative work. The Determination font, sound effects, and other third-party assets belong to their respective creators.
 
 The portfolio is still being improved.
