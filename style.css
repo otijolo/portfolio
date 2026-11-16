@@ -2583,11 +2583,13 @@ html.keyboard-mode .contact-list a:focus::before {
     line-height: 1;
   }
 
+  .menu-option::before,
   .menu-option.keyboard-selected::before {
     width: 20px;
     height: 20px;
     left: -23px;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .dialogue-line {
@@ -2647,8 +2649,14 @@ html.keyboard-mode .contact-list a:focus::before {
   }
 
   .hanging-tool {
-    scale: 0.6;
+    transform: translateX(-50%) scale(0.6);
     transform-origin: center top;
+  }
+
+  .skill-drop::before {
+    left: -2.4px;
+    width: 4.8px;
+    background-size: 4.8px 19.2px;
   }
 
   .sound-toggle,
