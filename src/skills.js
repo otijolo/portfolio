@@ -54,7 +54,7 @@ export const skillCategories = {
       "CSS",
       "#",
       "#81b9e2",
-      "CSS cuida da aparência das páginas. Uso pra o visual, o layout e as animações dessa loja.",
+      "CSS cuida da aparência das páginas. Uso pro visual, o layout e as animações dessa loja.",
     ],
     [
       "Git",
