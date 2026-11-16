@@ -2486,9 +2486,183 @@ html.keyboard-mode .contact-list a:focus::before {
     color: var(--gold);
     font-size: 36px;
   }
+}
 
-  .orientation-notice p:last-child {
-    color: var(--muted);
-    font-size: 22px;
+@media (orientation: landscape) and (hover: none) and (pointer: coarse) and (max-height: 600px) {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .storefront {
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .shop-scene {
+    height: 43dvh;
+    min-height: 0;
+    --merchant-offset: 34vw;
+  }
+
+  .npc-container {
+    width: 43dvh;
+    height: 43dvh;
+  }
+
+  .show-skills .npc-container {
+    transform: scale(1.2);
+  }
+
+  .shop-tv {
+    width: auto;
+    height: 100%;
+    max-height: 100%;
+    max-width: 66%;
+    bottom: 0;
+  }
+
+  .show-projects .shop-tv {
+    left: 50%;
+  }
+
+  .game-hud {
+    height: 57dvh;
+    min-height: 0;
+  }
+
+  .hud-head {
+    display: none;
+  }
+
+  .main-box {
+    display: grid;
+    height: 100%;
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr) minmax(132px, 24%);
+    grid-template-rows: minmax(0, 1fr);
+    border-width: 4px;
+  }
+
+  .content-panel,
+  .content-panel:has(#screen-projetos:not([hidden])) {
+    min-height: 0;
+    height: 100%;
+    padding: 10px 18px;
+    border-right: 4px solid #fff;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+
+  .menu-panel {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    gap: 0;
+    padding: 4px 8px 4px 25px;
+    border-top: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+
+  .menu-option {
+    flex: 1 0 auto;
+    margin: 0;
+    padding: 2px 0;
+    font-size: clamp(14px, 5dvh, 22px);
+    line-height: 1.05;
+  }
+
+  .menu-footer {
+    position: static;
+    flex: none;
+    margin-top: 3px;
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .menu-option.keyboard-selected::before {
+    width: 20px;
+    height: 20px;
+    left: -23px;
+    top: 0;
+  }
+
+  .dialogue-line {
+    min-height: 0;
+    padding-top: 0;
+    font-size: clamp(16px, 5dvh, 22px);
+    line-height: 1.18;
+  }
+
+  .dialogue-line p {
+    margin: 0 0 0.65em;
+  }
+
+  #screen-projetos {
+    height: 100%;
+    min-height: 0;
+  }
+
+  #screen-projetos :is(.filter, .item-card, .shop-back),
+  .skill-choice,
+  .contact-list a {
+    font-size: clamp(16px, 5dvh, 22px);
+    line-height: 1.15;
+  }
+
+  #screen-projetos .shop-options {
+    flex: 1 0 auto;
+    column-gap: 24px;
+  }
+
+  #screen-projetos .shop-options:not([data-layout="project-list"]) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 24px;
+    align-content: start;
+  }
+
+  #screen-projetos .shop-options[data-layout="project-list"] {
+    gap: 6px 24px;
+  }
+
+  #screen-projetos .shop-options button {
+    margin-bottom: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  .skill-categories,
+  .contact-list {
+    gap: 4px;
+    margin-top: 4px;
+  }
+
+  .contact-list .contact-email {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .hanging-tool {
+    scale: 0.6;
+    transform-origin: center top;
+  }
+
+  .sound-toggle,
+  .sound-toggle img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .sound-toggle {
+    top: 8px;
+    right: 10px;
+  }
+
+  .door-overlay {
+    background-position: center;
   }
 }
