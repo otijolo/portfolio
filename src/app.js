@@ -199,7 +199,9 @@ dialogues.set("inicio", {
 });
 $$("[data-dialogue]").forEach((box) => {
   const section = box.closest("[data-screen]").dataset.screen;
-  const lines = [...box.querySelectorAll("p")].map((p) => p.textContent.trim());
+  const lines = [...box.querySelectorAll("p")].map((p) =>
+    p.textContent.replace(/\s+/g, " ").trim(),
+  );
   const visible = document.createElement(section === "sobre" ? "div" : "p");
   visible.setAttribute("aria-hidden", "true");
   const accessible = document.createElement("p");
