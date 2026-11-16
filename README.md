@@ -1,43 +1,61 @@
-# Gamified Portfolio (RPG Style)
+# Interactive Portfolio — The Idea Shop
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![Aseprite](https://img.shields.io/badge/Aseprite-FFFFFF?style=for-the-badge&logo=Aseprite&logoColor=#7D929E)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Aseprite](https://img.shields.io/badge/Aseprite-FFFFFF?style=for-the-badge&logo=aseprite&logoColor=7D929E)
 
-This is an interactive personal portfolio featuring an immersive aesthetic inspired by classic RPGs (like Undertale). The biggest challenge and main highlight of this project is that it was built **100% with pure HTML and CSS**, without a single line of JavaScript.
+My portfolio takes the form of an RPG shop, inspired by Undertale's interfaces. A merchant introduces my projects, experience, and contact information through dialogue and interactive pixel art.
 
-[**Check out the live portfolio here!**](https://otijolo.github.io/portfolio)
+The site started as an experiment built entirely with HTML and CSS. This version adds vanilla JavaScript to expand the interactions while preserving the original visual style.
 
----
+[Visit the portfolio](https://otijolo.github.io/portfolio/)
 
-## About
+## Inside the shop
 
-Developed to consolidate my Web Development skills, the goal was to push the limits of CSS. All the interactivity, screen transitions, and menu logic were created using advanced CSS techniques.
+- An entrance and exit door with custom artwork and sound effects.
+- A merchant with talking animations, blinking eyes, and pupils that follow the mouse.
+- Projects organized into categories, with previews and image galleries displayed on a TV.
+- Tools and technologies hanging from animated ropes, with dialogue about my experience with each one.
+- Mouse and keyboard navigation, plus a sound toggle.
+- Scenery, character, doors, TV, hands, and pixel art icons drawn by me in Aseprite.
 
-Beyond the code, the design is completely custom. All the visual elements (from the background scenery to the character and UI details) were drawn and sliced by me using Aseprite.
+## Built with
 
-## Features
+HTML, CSS, and vanilla JavaScript, with no frameworks or build step. The site is static and can be hosted on GitHub Pages.
 
-* **Zero JavaScript:** Tab navigation and menus are controlled purely by HTML states (`input type="radio"` and `:checked`).
-* **Typewriter Effect:** Responsive animated dialog texts built with CSS variables, `@keyframes`, and the `steps()` function.
-* **Dynamic Eye-Tracking:** The NPC's eyes follow the user's mouse movement across the screen, built entirely with `:hover` selectors.
-* **Custom Pixel Art:** All visual assets and sprite slices were made from scratch in Aseprite.
+## Running locally
 
-## How to run locally
+1. Clone the repository and open the folder in VS Code.
+2. With the Live Server extension installed, right-click `index.html`.
+3. Select **Open with Live Server**.
 
-Since this project is perfectly static and has no dependencies, frameworks, or databases, running it is extremely simple:
+Alternatively, start a Python server from the project folder:
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/otijolo/portfolio.git
-   ```
-2. Open the project folder in your file explorer.
-3. Doubleclick the `index.html` file to open it in your default web browser.
+```bash
+python -m http.server 5500
+```
 
-## Screenshots
+Then open http://localhost:5500. Use a local server to load the JavaScript modules and audio files.
 
-![Main Menu](prints/print_start_menu.png)
-![Closed Door](prints/print_closed_door.png)
+## Controls
 
+- **Arrow keys:** navigate between options.
+- **Z or Enter:** confirm.
+- **X:** reveal the full text while it is being typed, or go back.
+- **Mouse:** select options, explore the icons, and browse project images.
 
-Made by [Juan (me!!!)](https://github.com/otijolo)
+## Project structure
+
+- `index.html`: page and screen structure.
+- `style.css`: styling, layout, and animations.
+- `src/`: navigation, dialogue, project catalog, skills, and audio.
+- `assets/`: sprites, project images, font, and sound effects.
+
+## Authorship and credits
+
+Experience concept, art direction, and pixel art by Juan Carlos.
+
+The featured projects include collaborative work. The Determination font, sound effects, and other third-party assets belong to their respective creators.
+
+The portfolio is still being improved.

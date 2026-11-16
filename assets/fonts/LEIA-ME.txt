@@ -1,0 +1,1 @@
+A fonte determination.ttf está incluída nesta pasta e é carregada pelo style.css.

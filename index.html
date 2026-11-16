@@ -1,16 +1,399 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#24202c">
-  <title>Portfólio em manutenção</title>
-  <style>
-    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #24202c; }
-    img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center bottom; image-rendering: pixelated; }
-  </style>
-</head>
-<body>
-  <img src="assets/images/foreground/door-break.png" alt="Portfólio em manutenção">
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#111018" />
+    <meta
+      name="description"
+      content="Portfólio de Juan Carlos: direção criativa, ilustração, arte pra jogos e design digital. Entre na loja e conheça os projetos."
+    />
+    <title>Juan Carlos — Loja de ideias</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <script type="module" src="src/app.js"></script>
+  </head>
+  <body>
+    <button
+      id="sound-toggle"
+      class="sound-toggle"
+      type="button"
+      aria-label="Desativar som"
+      aria-pressed="false"
+      title="Desativar som"
+    >
+      <img
+        class="sound-waves"
+        src="assets/images/details/sound1.png"
+        alt=""
+        draggable="false"
+      />
+      <img
+        class="sound-muted"
+        src="assets/images/details/sound2.png"
+        alt=""
+        draggable="false"
+      />
+    </button>
+    <a class="skip-link" href="#conteudo">Pular pra o conteúdo</a>
+
+    <div class="storefront">
+      <div
+        class="shop-scene"
+        id="scene"
+        aria-label="Mercador em sua loja de ideias"
+      >
+        <div class="shop-tv" role="region" aria-label="TV de projetos" inert>
+          <div class="tv-cabinet is-off">
+            <div class="tv-screen"></div>
+            <div class="tv-static" aria-hidden="true">
+              <img
+                src="assets/images/details/tv3.png"
+                alt=""
+                draggable="false"
+              />
+            </div>
+          </div>
+          <div class="tv-stand"></div>
+        </div>
+        <div class="npc-container" aria-hidden="true">
+          <img
+            class="npc-body npc-awake npc-mouth-closed"
+            src="assets/images/character/npc_juan_closed.png"
+            alt=""
+          />
+          <img
+            class="npc-body npc-awake npc-mouth-open"
+            src="assets/images/character/npc_juan_open.png"
+            alt=""
+          />
+          <img
+            class="npc-body npc-blink npc-mouth-closed"
+            src="assets/images/character/npc_juan_blink_closed.png"
+            alt=""
+          />
+          <img
+            class="npc-body npc-blink npc-mouth-open"
+            src="assets/images/character/npc_juan_blink_open.png"
+            alt=""
+          />
+          <img
+            class="npc-eyes npc-eye-left"
+            src="assets/images/character/npc_juan_pupils.png"
+            alt=""
+          />
+          <img
+            class="npc-eyes npc-eye-right"
+            src="assets/images/character/npc_juan_pupils.png"
+            alt=""
+          />
+          <span class="npc-remote">
+            <span class="remote-control"
+              ><img
+                src="assets/images/character/controle.png"
+                alt=""
+                draggable="false"
+            /></span>
+            <span class="remote-press"
+              ><img
+                src="assets/images/character/apertando.png"
+                alt=""
+                draggable="false"
+            /></span>
+          </span>
+        </div>
+        <div class="scene-curtains" aria-hidden="true"></div>
+        <div
+          class="hanging-skills"
+          role="group"
+          aria-label="Ferramentas penduradas"
+          hidden
+        ></div>
+      </div>
+
+      <main class="game-hud" id="conteudo">
+        <div class="hud-head">
+          <p class="screen-footnote">
+            Z CONFIRMAR · X REVELAR / VOLTAR · ↑↓ SELECIONAR
+          </p>
+        </div>
+
+        <div class="main-box">
+          <div class="content-panel" id="content-panel">
+            <section
+              class="screen"
+              data-screen="inicio"
+              id="screen-inicio"
+              aria-labelledby="heading-inicio"
+            >
+              <h1 id="heading-inicio" class="sr-only">Conversar com Juan</h1>
+              <div
+                class="dialogue-line"
+                id="dialogue-control"
+                role="button"
+                tabindex="0"
+                aria-label="Clique pra revelar a introdução completa"
+              >
+                <div id="intro-text" aria-hidden="true">
+                  <p>Prazer! Me chamo Juan.</p>
+                </div>
+                <p class="sr-only" id="intro-accessible"></p>
+              </div>
+            </section>
+
+            <section
+              class="screen"
+              data-screen="projetos"
+              id="screen-projetos"
+              aria-labelledby="heading-projetos"
+              hidden
+            >
+              <h2 id="heading-projetos" class="sr-only">Projetos</h2>
+              <div data-dialogue>
+                <p>
+                  Aqui tem alguns projetos meus separados em categorias. Dá uma
+                  olhada!
+                </p>
+              </div>
+              <div class="shop-options">
+                <div class="filters" role="group" aria-label="Filtrar projetos">
+                  <button
+                    class="filter active"
+                    data-filter="todos"
+                    type="button"
+                    aria-pressed="true"
+                  >
+                    Tudo
+                  </button>
+                  <button
+                    class="filter"
+                    data-filter="jogos"
+                    type="button"
+                    aria-pressed="false"
+                  >
+                    Jogos
+                  </button>
+                  <button
+                    class="filter"
+                    data-filter="interfaces"
+                    type="button"
+                    aria-pressed="false"
+                  >
+                    Interfaces
+                  </button>
+                  <button
+                    class="filter"
+                    data-filter="codigos"
+                    type="button"
+                    aria-pressed="false"
+                  >
+                    Códigos
+                  </button>
+                </div>
+                <div
+                  class="inventory"
+                  id="inventory"
+                  aria-live="polite"
+                  hidden
+                ></div>
+                <button
+                  class="item-card shop-back"
+                  id="back-categories"
+                  type="button"
+                  hidden
+                >
+                  <span class="back-arrow" aria-hidden="true">←</span>Voltar
+                </button>
+              </div>
+            </section>
+
+            <section
+              class="screen"
+              data-screen="habilidades"
+              id="screen-habilidades"
+              aria-labelledby="heading-habilidades"
+              hidden
+            >
+              <h2 id="heading-habilidades" class="sr-only">Habilidades</h2>
+              <div data-dialogue>
+                <p>
+                  Aqui tem as minhas experiências, separadas em categorias. É só
+                  escolher uma e clicar nos ícones que aparecerem.
+                </p>
+              </div>
+              <div
+                class="skill-categories"
+                role="group"
+                aria-label="Categorias de habilidades"
+              >
+                <button
+                  type="button"
+                  class="skill-choice"
+                  data-skill-category="programacao"
+                  aria-pressed="false"
+                >
+                  Programação
+                </button>
+                <button
+                  type="button"
+                  class="skill-choice"
+                  data-skill-category="design"
+                  aria-pressed="false"
+                >
+                  Design e Arte
+                </button>
+                <button
+                  type="button"
+                  class="skill-choice"
+                  data-skill-category="edicao"
+                  aria-pressed="false"
+                >
+                  Edição
+                </button>
+              </div>
+            </section>
+
+            <section
+              class="screen"
+              data-screen="sobre"
+              id="screen-sobre"
+              aria-labelledby="heading-sobre"
+              hidden
+            >
+              <h2 id="heading-sobre" class="sr-only">Sobre Juan</h2>
+              <div data-dialogue>
+                <p>
+                  Sou Juan Carlos, estudante de Ciência da Computação na UNIFOR,
+                  em Fortaleza.
+                </p>
+                <p>
+                  Meu maior interesse é a criação visual: desenho personagens,
+                  penso na identidade artística de projetos e prototipo
+                  interfaces.
+                </p>
+                <p>
+                  Já produzi conteúdo pra perfis de redes sociais como
+                  freelancer e trabalhei com edição de vídeos e criação de
+                  intros e thumbnails pra canais do YouTube.
+                </p>
+                <p>
+                  Nessa mistura de arte e tecnologia, também venho tentando
+                  aprender sobre música, mas ainda sou bem iniciante.
+                </p>
+              </div>
+            </section>
+
+            <section
+              class="screen"
+              data-screen="contato"
+              id="screen-contato"
+              aria-labelledby="heading-contato"
+              hidden
+            >
+              <h2 id="heading-contato" class="sr-only">Contato</h2>
+              <div data-dialogue>
+                <p>
+                  Bora continuar se falando! Tá aqui alguns dos lugares que dá
+                  pra me encontrar:
+                </p>
+              </div>
+              <div class="contact-list">
+                <a class="contact-email" href="mailto:juancspereira1@gmail.com"
+                  >juancspereira1@gmail.com (e-mail pra contato)</a
+                >
+                <a
+                  href="https://www.linkedin.com/in/juancsp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >LinkedIn</a
+                >
+                <a
+                  href="https://discord.com/users/429109104762683393"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Discord</a
+                >
+                <a
+                  href="https://github.com/otijolo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              </div>
+            </section>
+          </div>
+
+          <nav class="menu-panel" aria-label="Menu da loja">
+            <button
+              class="menu-option active"
+              data-nav="inicio"
+              aria-current="page"
+              type="button"
+            >
+              Conversar
+            </button>
+            <button class="menu-option" data-nav="projetos" type="button">
+              Projetos
+            </button>
+            <button class="menu-option" data-nav="habilidades" type="button">
+              Habilidades
+            </button>
+            <button class="menu-option" data-nav="sobre" type="button">
+              Sobre mim
+            </button>
+            <button class="menu-option" data-nav="contato" type="button">
+              Contato
+            </button>
+            <button class="menu-option menu-exit" id="exit-store" type="button">
+              Sair
+            </button>
+            <div class="menu-footer"><small>© 2026 Juan Carlos</small></div>
+          </nav>
+        </div>
+      </main>
+    </div>
+
+    <button
+      class="door-overlay"
+      id="door-overlay"
+      type="button"
+      aria-label="Abrir a porta metálica e entrar na loja"
+    ></button>
+
+    <dialog
+      id="project-dialog"
+      class="project-dialog"
+      aria-labelledby="project-title"
+    >
+      <div class="detail-header">
+        <span class="eyebrow">FICHA DO ITEM</span
+        ><button
+          type="button"
+          class="close-detail"
+          id="close-project"
+          aria-label="Fechar ficha"
+        >
+          ✕ Fechar
+        </button>
+      </div>
+      <div class="detail-image-wrap" id="project-media"></div>
+      <div class="detail-body">
+        <span class="detail-tag" id="project-category"></span>
+        <h2 id="project-title"></h2>
+        <p id="project-description"></p>
+        <h3>O que eu fiz</h3>
+        <p id="project-role"></p>
+        <p class="detail-credit" id="project-credit"></p>
+        <div class="detail-gallery" id="project-gallery"></div>
+      </div>
+    </dialog>
+    <noscript
+      ><p class="no-js">
+        O site fica melhor com JavaScript habilitado. Sem ele, os projetos podem
+        ser encontrados no arquivo README e no GitHub.
+      </p></noscript
+    >
+  </body>
 </html>
