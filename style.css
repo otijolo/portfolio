@@ -972,15 +972,6 @@ html.js .door-overlay {
     margin-top: 5px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
 html.no-motion *,
 html.no-motion *::before,
 html.no-motion *::after {
@@ -1382,13 +1373,6 @@ html.keyboard-mode
     font-size: 13px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .door-overlay,
-  .door-overlay.is-open {
-    transition-duration: 0s;
-  }
-}
-
 .shop-scene {
   isolation: isolate;
   --merchant-offset: clamp(140px, 34vw, 660px);
@@ -1737,15 +1721,6 @@ html.keyboard-mode
   }
   .tv-project-title {
     font-size: 11px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .npc-walking .npc-container {
-    animation: none;
-  }
-  .npc-container,
-  .shop-tv {
-    transition: none;
   }
 }
 @media (max-width: 670px) {
@@ -2429,16 +2404,6 @@ html.keyboard-mode .contact-list a:focus::before {
     font-size: 19px;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .skill-pendulum,
-  .skill-drop {
-    animation: none;
-  }
-  .skill-pendulum {
-    transform: none;
-  }
-}
-
 .orientation-notice {
   display: none;
 }

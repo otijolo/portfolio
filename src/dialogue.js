@@ -6,7 +6,6 @@ import {
 export function createDialogue(
   element,
   lines,
-  shouldReduceMotion,
   onTypingChange = () => {},
   renderText = (text) => {
     element.textContent = text;
@@ -30,10 +29,6 @@ export function createDialogue(
     progress = 0;
     finished = false;
     renderText("");
-    if (shouldReduceMotion()) {
-      reveal();
-      return;
-    }
     onTypingChange(true);
     setDialogueSoundTyping(true);
     ticker = setInterval(() => {

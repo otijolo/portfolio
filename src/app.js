@@ -18,7 +18,6 @@ const door = $("#door-overlay");
 const modal = $("#project-dialog");
 const inventory = $("#inventory");
 const menuButtons = [...$$("[data-nav]"), $("#exit-store")];
-const reduceSystem = window.matchMedia("(prefers-reduced-motion: reduce)");
 const npc = $(".npc-container");
 function setPupilOffsets(leftX = 0, leftY = 0, rightX = 0, rightY = 0) {
   const scene = $("#scene");
@@ -34,12 +33,7 @@ let blinkTimer = null;
 function scheduleBlink() {
   clearTimeout(blinkTimer);
   npc.classList.remove("is-blinking");
-  if (
-    document.hidden ||
-    reduceSystem.matches ||
-    !door.classList.contains("is-open")
-  )
-    return;
+  if (document.hidden || !door.classList.contains("is-open")) return;
 
   blinkTimer = setTimeout(
     () => {
@@ -92,9 +86,7 @@ function presentMedia(content, request) {
       if (request === mediaRequest)
         $(".tv-cabinet").classList.remove("is-static");
     },
-    reduceSystem.matches
-      ? 0
-      : Math.max(0, 240 - (performance.now() - tvStaticStarted)),
+    Math.max(0, 240 - (performance.now() - tvStaticStarted)),
   );
 }
 function updateProjectScene(showProjects) {
@@ -131,7 +123,6 @@ function registerDialogue(section, element, accessible, lines) {
   const controller = createDialogue(
     element,
     dialogueLines,
-    () => reduceSystem.matches,
     (typing) => {
       npc.classList.toggle(
         "is-talking",
@@ -171,7 +162,6 @@ $("#intro-accessible").textContent = introLines.join("\n\n");
 const introDialogue = createDialogue(
   introText,
   [introLines.join("\n\n")],
-  () => reduceSystem.matches,
   (typing) => {
     npc.classList.toggle(
       "is-talking",
@@ -262,8 +252,8 @@ function raiseTools() {
           { transform: `translateY(-${distance}px)` },
         ],
         {
-          duration: reduceSystem.matches ? 0 : 650,
-          delay: reduceSystem.matches ? 0 : index * 15,
+          duration: 650,
+          delay: index * 15,
           easing: "cubic-bezier(.45,0,.7,1)",
           fill: "forwards",
         },
@@ -306,10 +296,6 @@ function positionTools(elapsed = Infinity) {
 }
 function lowerTools() {
   cancelAnimationFrame(toolsAnimationFrame);
-  if (reduceSystem.matches) {
-    positionTools();
-    return;
-  }
   const start = performance.now();
   positionTools(0);
   function frame(now) {
@@ -329,7 +315,6 @@ function speakSkill(text) {
   dialogue = createDialogue(
     box.querySelector("p"),
     [text],
-    () => reduceSystem.matches,
     (typing) => {
       npc.classList.toggle("is-talking", typing && storeReady);
       box.querySelector(".sr-only").textContent = text;
@@ -501,38 +486,36 @@ async function showSkillCategory(category) {
         clearSkillPreview(name);
     });
     button.addEventListener("click", () => {
-      if (!reduceSystem.matches) {
-        button.classList.remove("is-poking");
-        void button.offsetWidth;
-        button.classList.add("is-poking");
-        button.getAnimations().forEach((animation) => {
-          if (
-            animation.effect?.pseudoElement === "::after" &&
-            animation.effect
-              .getKeyframes()
-              .some((frame) => frame.marginTop !== undefined)
-          )
-            animation.cancel();
-        });
+      button.classList.remove("is-poking");
+      void button.offsetWidth;
+      button.classList.add("is-poking");
+      button.getAnimations().forEach((animation) => {
+        if (
+          animation.effect?.pseudoElement === "::after" &&
+          animation.effect
+            .getKeyframes()
+            .some((frame) => frame.marginTop !== undefined)
+        )
+          animation.cancel();
+      });
 
-        button.animate(
-          [
-            { marginTop: "0px" },
-            { marginTop: "9px", offset: 0.32 },
-            { marginTop: "0px" },
-          ],
-          { duration: 420, easing: "ease-in-out", pseudoElement: "::after" },
-        );
-        drop.getAnimations().forEach((animation) => animation.cancel());
-        drop.animate(
-          [
-            { transform: "translateY(0)" },
-            { transform: "translateY(-9px)", offset: 0.32 },
-            { transform: "translateY(0)" },
-          ],
-          { duration: 420, easing: "ease-in-out" },
-        );
-      }
+      button.animate(
+        [
+          { marginTop: "0px" },
+          { marginTop: "9px", offset: 0.32 },
+          { marginTop: "0px" },
+        ],
+        { duration: 420, easing: "ease-in-out", pseudoElement: "::after" },
+      );
+      drop.getAnimations().forEach((animation) => animation.cancel());
+      drop.animate(
+        [
+          { transform: "translateY(0)" },
+          { transform: "translateY(-9px)", offset: 0.32 },
+          { transform: "translateY(0)" },
+        ],
+        { duration: 420, easing: "ease-in-out" },
+      );
       selectedSkill = name;
       previewedSkill = null;
       keyboardZone = "tools";
@@ -561,14 +544,6 @@ $$("[data-skill-category]").forEach((button) =>
     showSkillCategory(button.dataset.skillCategory);
   }),
 );
-reduceSystem.addEventListener("change", () => {
-  if (reduceSystem.matches) {
-    cancelAnimationFrame(toolsAnimationFrame);
-    positionTools();
-  }
-  if (reduceSystem.matches && dialogue.isTyping()) dialogue.reveal();
-  scheduleBlink();
-});
 
 function getRoute() {
   const [section, id] = decodeURIComponent(location.hash.slice(1)).split("/");
@@ -921,7 +896,6 @@ function openProject(project, preview = false) {
   const projectDialogue = createDialogue(
     box.querySelector("p"),
     lines,
-    () => reduceSystem.matches,
     (typing) => {
       npc.classList.toggle("is-talking", typing && storeReady);
       accessible.textContent = project.description;
